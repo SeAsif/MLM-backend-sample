@@ -1,0 +1,60 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const UserSchema = new Schema({
+  id: String,
+  parent_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    default: null
+  },
+  first_name: String,
+  last_name: String,
+  username: String,
+  email: String,
+  password: String,
+  banned: Boolean,
+  last_login: Date,
+  last_activity: Date,
+  date_created: {
+    type: String,
+    default: new Date(),
+  },
+  ip_address: String,
+  user_type: String,
+  father_id: String,
+  position: Number,
+  address_1: String,
+  address_2: String,
+  city: String,
+  zip_code: String,
+  state_id: String,
+  country_id: String,
+  shipping_address: String,
+  shipping_city: String,
+  shipping_zipcode: String,
+  shipping_country: String,
+  shipping_state: String,
+  date_of_birth: Date,
+  user_cover: String,
+  date_of_joining: Date,
+  gender: {
+    type: String,
+    enum: ['male', 'female'],
+    default: 'male',
+  },
+  phone_number: String,
+  company_name: String,
+  company_address: String,
+  facebook: String,
+  twitter: String,
+  instagram: String,
+  linkedIn: String,
+  youtube: String,
+  tax_id: Number,
+  website: String,
+  refresh_token: String,
+  avatar: String,
+});
+
+module.exports = mongoose.model('User', UserSchema);
